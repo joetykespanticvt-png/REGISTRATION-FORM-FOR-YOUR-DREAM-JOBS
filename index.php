@@ -1,5 +1,5 @@
 <?php
-// --- 1. DATABASE CONNECTION ---
+
 $servername = "localhost:3307"; // Your Port
 $username = "root"; 
 $password = "";     
@@ -8,7 +8,7 @@ $dbname = "student management system";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } 
 
-// --- INITIALIZE VARIABLES (To keep form empty by default) ---
+
 $first_name = "";
 $last_name = "";
 $gender = "";
@@ -19,7 +19,7 @@ $religion = "";
 $id = 0;
 $update_mode = false;
 
-// --- 2. DELETE FUNCTION ---
+
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $conn->query("DELETE FROM student_records WHERE student_id=$id");
@@ -27,7 +27,6 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// --- 3. EDIT FUNCTION (Fetch data to fill the form) ---
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
     $update_mode = true;
@@ -44,7 +43,6 @@ if (isset($_GET['edit'])) {
     }
 }
 
-// --- 4. HANDLE FORM SUBMISSION (Insert OR Update) ---
 if (isset($_POST['save'])) {
     // INSERT NEW RECORD
     $first_name = $_POST['first_name'];
@@ -173,4 +171,5 @@ if (isset($_POST['update'])) {
     </table>
 
 </body>
+
 </html>
